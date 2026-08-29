@@ -1,0 +1,68 @@
+{
+  "site": {
+    "name": "GameCTL",
+    "shortName": "GameCTL Wiki",
+    "tagline": "Wiki Comunitaria de Fans",
+    "description": "GameCTL es una wiki comunitaria de fans con guías, códigos, actualizaciones y consejos para jugadores.",
+    "legalNotice": "Wiki de fans no oficial. Hecha por jugadores, para jugadores."
+  },
+  "nav": {
+    "home": "Inicio",
+    "menu": "Menú",
+    "toggleTheme": "Cambiar tema",
+    "guide": "Guía",
+    "codes": "Códigos",
+    "updates": "Actualizaciones",
+    "community": "Comunidad",
+    "maps": "Mapas"
+  },
+  "home": {
+    "meta": {
+      "title": "GameCTL Wiki — Guías, Códigos y Comunidad",
+      "description": "La wiki de fans de GameCTL: códigos activos, guías, actualizaciones, consejos y recursos comunitarios."
+    },
+    "hero": {
+      "eyebrow": "Wiki Comunitaria de Fans",
+      "title": "GameCTL",
+      "description": "Tu recurso impulsado por la comunidad para guías, códigos activos, actualizaciones y consejos. Todo lo que necesitas en un solo lugar.",
+      "stats": [
+        { "label": "WIKI", "value": "GameCTL", "description": "Wiki comunitaria para jugadores" },
+        { "label": "ACTUALIZADO", "value": "2026", "description": "Últimas actualizaciones de contenido" },
+        { "label": "ESTADO", "value": "Activo", "description": "El sitio está activo y mantenido" }
+      ],
+      "cta": {
+        "primary": { "label": "Explorar Guías", "href": "/guide" },
+        "secondary": { "label": "Códigos Activos", "href": "/codes" }
+      }
+    },
+    "featured": {
+      "title": "Contenido Destacado",
+      "description": "Comienza con las guías y recursos más populares.",
+      "viewAll": "Ver todo"
+    },
+    "latest": {
+      "title": "Últimas Actualizaciones",
+      "description": "Guías, códigos y noticias recientes.",
+      "viewAll": "Ver todas las actualizaciones"
+    }
+  },
+  "shared": {
+    "wikiNavigation": "Navegación del Wiki",
+    "readMore": "Leer más",
+    "lastUpdated": "Última actualización",
+    "publishedOn": "Publicado el",
+    "breadcrumbs": { "home": "Inicio" }
+  },
+  "footer": {
+    "about": "Acerca de",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "copyright": "Derechos de Autor",
+    "disclaimer": "Esta es una wiki de fans. No está afiliada ni respaldada por los creadores originales del juego."
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "La página que buscas no existe.",
+    "backHome": "Volver al Inicio"
+  }
+}

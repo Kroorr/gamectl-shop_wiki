@@ -1,0 +1,66 @@
+# Multi-stage build for Next.js static export with nginx
+ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+ARG NEXT_PUBLIC_MICROSOFT_CLARITY_ID
+ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
+ARG NEXT_PUBLIC_AD_KEY_300X250
+ARG NEXT_PUBLIC_AD_KEY_160X600
+ARG NEXT_PUBLIC_AD_KEY_160X300
+ARG NEXT_PUBLIC_AD_KEY_320X50
+
+FROM node:20-alpine AS deps
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json* ./
+RUN npm install --legacy-peer-deps
+
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+ARG NEXT_PUBLIC_MICROSOFT_CLARITY_ID
+ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
+ARG NEXT_PUBLIC_AD_KEY_300X250
+ARG NEXT_PUBLIC_AD_KEY_160X600
+ARG NEXT_PUBLIC_AD_KEY_160X300
+ARG NEXT_PUBLIC_AD_KEY_320X50
+
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+ENV NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}
+ENV NEXT_PUBLIC_MICROSOFT_CLARITY_ID=${NEXT_PUBLIC_MICROSOFT_CLARITY_ID}
+ENV NEXT_PUBLIC_GOOGLE_ADSENSE_ID=${NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
+ENV NEXT_PUBLIC_AD_KEY_300X250=${NEXT_PUBLIC_AD_KEY_300X250}
+ENV NEXT_PUBLIC_AD_KEY_160X600=${NEXT_PUBLIC_AD_KEY_160X600}
+ENV NEXT_PUBLIC_AD_KEY_160X300=${NEXT_PUBLIC_AD_KEY_160X300}
+ENV NEXT_PUBLIC_AD_KEY_320X50=${NEXT_PUBLIC_AD_KEY_320X50}
+
+RUN npm run build
+
+FROM nginx:alpine AS runner
+COPY --from=builder /app/out /usr/share/nginx/html
+COPY <<'EOF' /etc/nginx/conf.d/default.conf
+server {
+    listen 3000;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ $uri.html /404.html =404;
+    }
+
+    location /_next/static {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+EOF
+
+EXPOSE 3000
+CMD ["nginx", "-g", "daemon off;"]

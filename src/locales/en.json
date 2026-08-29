@@ -1,0 +1,88 @@
+{
+  "site": {
+    "name": "GameCTL",
+    "shortName": "GameCTL Wiki",
+    "tagline": "Fan-Made Community Wiki",
+    "description": "GameCTL is a fan-made community wiki with guides, codes, updates, and tips for players.",
+    "legalNotice": "Non-official fan wiki. Made by players, for players."
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "toggleTheme": "Toggle theme",
+    "guide": "Guide",
+    "codes": "Codes",
+    "updates": "Updates",
+    "community": "Community",
+    "maps": "Maps"
+  },
+  "home": {
+    "meta": {
+      "title": "GameCTL Wiki — Guides, Codes & Community",
+      "description": "The fan-made GameCTL Wiki: active codes, guides, updates, tips, and community resources."
+    },
+    "hero": {
+      "eyebrow": "Fan-Made Community Wiki",
+      "title": "GameCTL",
+      "description": "Your community-driven resource for guides, active codes, updates, and tips. Everything you need in one place.",
+      "stats": [
+        {
+          "label": "WIKI",
+          "value": "GameCTL",
+          "description": "Community wiki for players"
+        },
+        {
+          "label": "UPDATED",
+          "value": "2026",
+          "description": "Latest content updates"
+        },
+        {
+          "label": "STATUS",
+          "value": "Live",
+          "description": "Site is live and maintained"
+        }
+      ],
+      "cta": {
+        "primary": {
+          "label": "Explore Guides",
+          "href": "/guide"
+        },
+        "secondary": {
+          "label": "Active Codes",
+          "href": "/codes"
+        }
+      }
+    },
+    "featured": {
+      "title": "Featured Content",
+      "description": "Start with the most popular guides and resources.",
+      "viewAll": "View all"
+    },
+    "latest": {
+      "title": "Latest Updates",
+      "description": "Recent guides, codes, and news.",
+      "viewAll": "View all updates"
+    }
+  },
+  "shared": {
+    "wikiNavigation": "Wiki Navigation",
+    "readMore": "Read more",
+    "lastUpdated": "Last updated",
+    "publishedOn": "Published on",
+    "breadcrumbs": {
+      "home": "Home"
+    }
+  },
+  "footer": {
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "Copyright",
+    "disclaimer": "This is a fan-made wiki. Not affiliated with or endorsed by the original game creators."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist.",
+    "backHome": "Back to Home"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "site": {
+    "name": "GameCTL",
+    "shortName": "GameCTL Wiki",
+    "tagline": "Wiki Communautaire de Fans",
+    "description": "GameCTL est une wiki communautaire de fans avec des guides, codes, mises à jour et astuces pour les joueurs.",
+    "legalNotice": "Wiki de fans non officiel. Fait par des joueurs, pour des joueurs."
+  },
+  "nav": {
+    "home": "Accueil",
+    "menu": "Menu",
+    "toggleTheme": "Changer le thème",
+    "guide": "Guide",
+    "codes": "Codes",
+    "updates": "Mises à jour",
+    "community": "Communauté",
+    "maps": "Cartes"
+  },
+  "home": {
+    "meta": {
+      "title": "GameCTL Wiki — Guides, Codes & Communauté",
+      "description": "La wiki de fans de GameCTL : codes actifs, guides, mises à jour, astuces et ressources communautaires."
+    },
+    "hero": {
+      "eyebrow": "Wiki Communautaire de Fans",
+      "title": "GameCTL",
+      "description": "Votre ressource communautaire pour les guides, codes actifs, mises à jour et astuces. Tout ce dont vous avez besoin au même endroit.",
+      "stats": [
+        { "label": "WIKI", "value": "GameCTL", "description": "Wiki communautaire pour les joueurs" },
+        { "label": "MIS À JOUR", "value": "2026", "description": "Dernières mises à jour de contenu" },
+        { "label": "STATUT", "value": "Actif", "description": "Le site est actif et maintenu" }
+      ],
+      "cta": {
+        "primary": { "label": "Explorer les Guides", "href": "/guide" },
+        "secondary": { "label": "Codes Actifs", "href": "/codes" }
+      }
+    },
+    "featured": {
+      "title": "Contenu en Vedette",
+      "description": "Commencez avec les guides et ressources les plus populaires.",
+      "viewAll": "Voir tout"
+    },
+    "latest": {
+      "title": "Dernières Mises à jour",
+      "description": "Guides, codes et nouvelles récents.",
+      "viewAll": "Voir toutes les mises à jour"
+    }
+  },
+  "shared": {
+    "wikiNavigation": "Navigation du Wiki",
+    "readMore": "Lire la suite",
+    "lastUpdated": "Dernière mise à jour",
+    "publishedOn": "Publié le",
+    "breadcrumbs": { "home": "Accueil" }
+  },
+  "footer": {
+    "about": "À propos",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "copyright": "Droits d'Auteur",
+    "disclaimer": "Ceci est une wiki de fans. Non affiliée ni approuvée par les créateurs originaux du jeu."
+  },
+  "notFound": {
+    "title": "Page Non Trouvée",
+    "description": "La page que vous recherchez n'existe pas.",
+    "backHome": "Retour à l'Accueil"
+  }
+}
