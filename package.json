@@ -9,7 +9,7 @@
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write",
     "test:export": "node --test scripts/verify-static-export.test.mjs",
-    "verify:export": "node scripts/verify-static-export.mjs out https://muscle-legends.wiki"
+    "verify:export": "node scripts/verify-static-export.mjs out https://gamectl.shop"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
