@@ -13,7 +13,7 @@ export default async function CopyrightPage({ params }: { params: Promise<{ loca
     <LegalPage
       title="Copyright"
       description="Copyright information for GameCTL Wiki."
-      content={
+      children={
         <div className="space-y-4">
           <p>Game-related assets, logos, and media belong to their respective owners. This is a fan-made wiki and is not affiliated with or endorsed by the original creators.</p>
         </div>

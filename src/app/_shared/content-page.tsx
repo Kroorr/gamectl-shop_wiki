@@ -4,8 +4,8 @@ import { getDynamicNavigation, getContent, getAllContent, type ContentItem, type
 import { WikiSidebar, Breadcrumbs, JsonLd } from "@/components/site";
 import { Link } from "@/components/custom-link";
 import { routing, type Locale } from "@/i18n/routing";
-import { TableOfContents } from "@/components/table-of-contents";
-import { SideAdBanner } from "@/components/sidebar-ad-banner";
+import { SidebarTOC } from "@/components/table-of-contents";
+import { SidebarAdBanner } from "@/components/sidebar-ad-banner";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
@@ -14,11 +14,6 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gamectl.shop";
 function extractHeadings(headings: { id: string; text: string; level: number }[] | undefined) {
   if (!headings) return [];
   return headings.filter((h) => h.level === 2 || h.level === 3);
-}
-
-function localizeHref(href: string, locale: Locale) {
-  if (locale === routing.defaultLocale) return href;
-  return `/localePrefix` === "always" ? `/localePrefix${href}` : `/${locale}${href}`;
 }
 
 export async function getContentPageMetadata(locale: Locale, slug: string[]): Promise<Metadata> {
@@ -182,8 +177,8 @@ export async function ContentPage({ locale, segments }: { locale: Locale; segmen
           </article>
         </div>
         <div className="hidden lg:block space-y-6">
-          {headings.length > 0 && <TableOfContents headings={headings} />}
-          <SideAdBanner adKey={process.env.NEXT_PUBLIC_AD_KEY_160X600} />
+          {headings.length > 0 && <SidebarTOC headings={headings} label="On this page" currentPathname={contentHref} />}
+          <SidebarAdBanner slot="160x600" adKey={process.env.NEXT_PUBLIC_AD_KEY_160X600} />
           <WikiSidebar locale={locale} navGroups={navGroups} currentPath={contentHref} />
         </div>
       </div>

@@ -5,7 +5,7 @@ export default function CopyrightPage() {
     <LegalPage
       title="Copyright"
       description="Copyright information for GameCTL Wiki."
-      content={
+      children={
         <div className="space-y-4">
           <p>Game-related assets, logos, and media belong to their respective owners. This is a fan-made wiki and is not affiliated with or endorsed by the original creators.</p>
           <p>Original content on this site (guides, articles, structure) is available under our open license unless otherwise noted.</p>

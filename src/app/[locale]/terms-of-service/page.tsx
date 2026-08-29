@@ -13,7 +13,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
     <LegalPage
       title="Terms of Service"
       description="Terms for using GameCTL Wiki."
-      content={
+      children={
         <div className="space-y-4">
           <p>By using this site, you agree not to misuse it, attempt unauthorized access, or present this fan wiki as an official property.</p>
         </div>
