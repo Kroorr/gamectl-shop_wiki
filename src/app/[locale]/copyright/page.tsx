@@ -10,14 +10,10 @@ export default async function CopyrightPage({ params }: { params: Promise<{ loca
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <LegalPage
-      title="Copyright"
-      description="Copyright information for GameCTL Wiki."
-      children={
-        <div className="space-y-4">
-          <p>Game-related assets, logos, and media belong to their respective owners. This is a fan-made wiki and is not affiliated with or endorsed by the original creators.</p>
-        </div>
-      }
-    />
+    <LegalPage title="Copyright">
+      <div className="space-y-4">
+        <p>Game-related assets, logos, and media belong to their respective owners. This is a fan-made wiki and is not affiliated with or endorsed by the original creators.</p>
+      </div>
+    </LegalPage>
   );
 }

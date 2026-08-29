@@ -10,15 +10,11 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <LegalPage
-      title="Privacy Policy"
-      description="How we handle information on GameCTL Wiki."
-      children={
-        <div className="space-y-4">
-          <p>This fan wiki provides informational game guides. We do not request account credentials, passwords, or private payment information.</p>
-          <p>By using this site, you agree to this privacy policy.</p>
-        </div>
-      }
-    />
+    <LegalPage title="Privacy Policy">
+      <div className="space-y-4">
+        <p>This fan wiki provides informational game guides. We do not request account credentials, passwords, or private payment information.</p>
+        <p>By using this site, you agree to this privacy policy.</p>
+      </div>
+    </LegalPage>
   );
 }
