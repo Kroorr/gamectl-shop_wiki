@@ -62,7 +62,7 @@ export async function getContentStaticParams(locale: Locale, contentType?: strin
     try {
       const items = await getAllContent(type, locale);
       for (const item of items) {
-        const segments = item.href.split("/").filter(Boolean);
+        const segments = item.segments;
         params.push({ slug: segments });
       }
     } catch {
@@ -104,10 +104,11 @@ export async function ContentPage({ locale, segments }: { locale: Locale; segmen
             <p className="mt-2 text-muted-foreground">All {contentTypeTitle.toLowerCase()} content.</p>
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {items.map((item) => {
-                const itemHref = locale === routing.defaultLocale ? item.href : `/${locale}${item.href}`;
+                const itemPath = `/${item.segments.join("/")}`;
+                const itemHref = locale === routing.defaultLocale ? itemPath : `/${locale}${itemPath}`;
                 return (
                   <Link
-                    key={item.href}
+                    key={itemPath}
                     href={itemHref}
                     className="group rounded-xl border border-border/60 bg-card/50 p-5 transition-all hover:border-[hsl(var(--nav-theme))/0.4] hover:shadow-lg"
                   >
