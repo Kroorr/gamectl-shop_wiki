@@ -87,14 +87,14 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
             {articles.slice(0, 6).map((article, index) => {
               const Icon = icons[index % icons.length];
               return (
-                <Card key={article.href} className="group relative overflow-hidden border-border/60 bg-card/50 p-5 transition-all duration-300 hover:border-[hsl(var(--nav-theme))/0.4] hover:shadow-lg">
+                <Card key={article.segments.join('/')} className="group relative overflow-hidden border-border/60 bg-card/50 p-5 transition-all duration-300 hover:border-[hsl(var(--nav-theme))/0.4] hover:shadow-lg">
                   <div className="flex items-start gap-3">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border bg-background/50 text-[hsl(var(--nav-theme))]">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))] transition-colors">
-                        <Link href={localizeHref(article.href, locale)} className="after:absolute after:inset-0">
+                        <Link href={localizeHref(`/${article.segments.join('/')}`, locale)} className="after:absolute after:inset-0">
                           {article.metadata.title}
                         </Link>
                       </h3>
@@ -129,8 +129,8 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {recentArticles.slice(0, 6).map((article) => (
               <Link
-                key={article.href}
-                href={localizeHref(article.href, locale)}
+                key={article.segments.join('/')}
+                href={localizeHref(`/${article.segments.join('/')}`, locale)}
                 className="group flex items-center gap-3 rounded-xl border border-border/60 bg-card/40 p-4 transition-all duration-200 hover:border-[hsl(var(--nav-theme))/0.4] hover:bg-card/70"
               >
                 <div className="min-w-0 flex-1">
