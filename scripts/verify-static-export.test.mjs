@@ -70,7 +70,7 @@ test("rejects a sitemap URL without corresponding exported HTML", () => {
   try {
     assert.throws(
       () => verifyStaticExport(directory, ORIGIN),
-      /Missing exported HTML for https:\/\/gamectl\.wiki\/missing-page/,
+      /Missing exported HTML for https:\/\/gamectl.shop\/missing-page/,
     );
   } finally {
     rmSync(directory, { recursive: true, force: true });
