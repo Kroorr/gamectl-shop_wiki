@@ -11,10 +11,10 @@ export async function generateStaticParams() {
   try {
     const items = await getAllContent(contentType, "en");
     for (const item of items) {
-      const segments = item.segments.filter(Boolean);
-      if (segments.length > 1) {
-        // Remove the contentType prefix since the route already includes it
-        params.push({ slug: segments.slice(1) });
+      // segments are relative to the contentType directory
+      // e.g., for content/en/codes/active-codes.mdx, segments = ["active-codes"]
+      if (item.segments.length > 0) {
+        params.push({ slug: item.segments });
       }
     }
   } catch {
