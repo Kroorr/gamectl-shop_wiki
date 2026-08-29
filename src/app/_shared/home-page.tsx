@@ -63,7 +63,6 @@ export async function HomePage({ locale }: { locale: Locale }) {
           locale={locale}
           articles={allArticles}
           recentArticles={recentArticles}
-          officialMediaTitle={messages.shared.officialMedia}
         />
         <div className="hidden lg:block">
           <WikiSidebar locale={locale} navGroups={navGroups} />

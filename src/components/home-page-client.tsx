@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { TrailerButton, localizeHref } from "@/components/site";
+import { localizeHref } from "@/components/site";
 import type { ContentItem } from "@/lib/content";
 import en from "@/locales/en.json";
 
@@ -16,7 +16,7 @@ type Home = typeof en.home;
 const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, MapIcon, Users, Trophy, Skull, Zap, CircleHelp, ScrollText];
 
 
-export default function HomePageClient({ home, locale, articles, recentArticles, officialMediaTitle }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[]; officialMediaTitle: string }) {
+export default function HomePageClient({ home, locale, articles, recentArticles,  }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
 
   return (
     <div className="space-y-16">
