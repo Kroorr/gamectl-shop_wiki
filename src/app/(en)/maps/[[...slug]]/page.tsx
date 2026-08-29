@@ -1,13 +1,13 @@
-import { ContentPage, getContentPageMetadata, getContentStaticParams } from "@/app/_shared/content-page";
+import { ContentPage, getContentPageMetadata } from "@/app/_shared/content-page";
 import { getAllContent } from "@/lib/content";
 
 const contentType = "maps";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  // For optional catch-all [[...slug]], generate only individual content pages
-  // The listing page (/guide) is generated automatically by the optional catch-all
-  const params: { slug?: string[] }[] = [];
+  // Optional catch-all [[...slug]]: must include all paths for static export
+  // Include empty slug for the listing page
+  const params: { slug: string[] }[] = [{ slug: [] }];
   try {
     const items = await getAllContent(contentType, "en");
     for (const item of items) {
