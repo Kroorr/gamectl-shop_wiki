@@ -62,8 +62,8 @@ export async function getContentStaticParams(locale: Locale, contentType?: strin
     try {
       const items = await getAllContent(type, locale);
       for (const item of items) {
-        const segments = item.segments;
-        params.push({ slug: segments });
+        // Prepend contentType to segments since they're relative to the contentType dir
+        params.push({ slug: [type, ...item.segments] });
       }
     } catch {
       // skip
