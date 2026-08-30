@@ -20,7 +20,8 @@ const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swo
 export default function HomePageClient({ home, locale, articles, recentArticles, navGroups }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[]; navGroups: NavGroup[] }) {
 
   return (
-    <div className="space-y-16">
+    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="space-y-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--nav-theme)/0.28)] bg-gradient-to-br from-[hsl(var(--nav-theme)/0.14)] via-card to-card px-5 py-9 text-left shadow-2xl shadow-[hsl(var(--nav-theme)/0.08)] md:px-12 md:py-14">
         <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden opacity-25 dark:opacity-20">
@@ -34,7 +35,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background opacity-85" />
         </div>
 
-        <div className="relative z-10 grid gap-10 md:grid-cols-[1.15fr_.85fr] md:items-center">
+        <div className="relative z-10">
           <div>
             <div className="mb-5 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center rounded-full border border-[hsl(var(--nav-theme)/0.35)] bg-[hsl(var(--nav-theme)/0.1)] px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme))]">{home.hero.eyebrow}</span>
@@ -73,20 +74,6 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
               </div>
             ))}
           </div>
-          </div>
-          <div className="rounded-3xl border border-border/80 bg-background/75 p-5 shadow-xl backdrop-blur-sm md:p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">Start exploring</p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Your shortcut to the wiki</h2>
-            <div className="mt-6 divide-y divide-border/70">
-              {navGroups.slice(0, 4).map((group, index) => {
-                const Icon = icons[index % icons.length];
-                return <Link key={group.slug} href={localizeHref(`/${group.slug}`, locale)} className="group flex items-center gap-3 py-4 first:pt-0 last:pb-0">
-                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-[hsl(var(--nav-theme)/0.11)] text-[hsl(var(--nav-theme))]"><Icon className="h-4 w-4" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))]">{group.title}</span><span className="text-xs text-muted-foreground">{group.count} resources</span></span>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-[hsl(var(--nav-theme))]" />
-                </Link>;
-              })}
-            </div>
           </div>
         </div>
       </section>
@@ -189,6 +176,24 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
           </div>
         </section>
       )}
+      </div>
+
+      <aside className="hidden lg:block lg:sticky lg:top-24">
+        <div className="rounded-3xl border border-border/80 bg-card/90 p-5 shadow-xl backdrop-blur-md md:p-7">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">Start exploring</p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Your shortcut to the wiki</h2>
+          <div className="mt-6 divide-y divide-border/70">
+            {navGroups.slice(0, 4).map((group, index) => {
+              const Icon = icons[index % icons.length];
+              return <Link key={group.slug} href={localizeHref(`/${group.slug}`, locale)} className="group flex items-center gap-3 py-4 first:pt-0 last:pb-0">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-[hsl(var(--nav-theme)/0.11)] text-[hsl(var(--nav-theme))]"><Icon className="h-4 w-4" /></span>
+                <span className="min-w-0 flex-1"><span className="block font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))]">{group.title}</span><span className="text-xs text-muted-foreground">{group.count} resources</span></span>
+                <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-[hsl(var(--nav-theme))]" />
+              </Link>;
+            })}
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }
