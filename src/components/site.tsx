@@ -55,7 +55,8 @@ export async function SiteHeader({ locale }: { locale: string }) {
       </div>
     </div>
   );
-  return <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}</div></header>;
+  // Normal flow lets mobile users scroll past the header; ads rendered after it stay below it.
+  return <header className="relative z-40 border-b border-border/80 bg-background/95 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}</div></header>;
 }
 
 function ThemeToggle({ label }: { label: string }) {

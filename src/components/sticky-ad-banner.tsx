@@ -1,9 +1,9 @@
 /**
  * StickyAdBanner
  *
- * Renders a 320×50 Adsterra banner that sticks just below the site header.
- * - sticky top-[57px] keeps it anchored below the header (header ≈ 57px tall)
- * - z-20 sits above page content but below the z-50 header
+ * Renders a 320×50 Adsterra banner directly below the site header.
+ * - normal flow keeps it below the header and lets it scroll away with the page
+ * - it never overlays the header or obscures mobile navigation
  * - No border-y / no background → desktop side-gutters are completely invisible
  * - Outer mx-auto max-w-4xl centres the slot; inner w-[320px] locks the ad width
  *   so no phantom transparent box bleeds to the edges on desktop
@@ -27,7 +27,7 @@ export function StickyAdBanner({ adKey }: StickyAdBannerProps) {
   if (!adKey || dismissed) return null;
 
   return (
-    <div className="sticky top-[57px] z-20 py-2">
+    <div className="relative z-10 w-full py-2">
       {/* Center the ad banner slot on all screens, adding small margin for mobile bounds */}
       <div className="mx-auto flex justify-center px-4">
         {/* relative container with exact ad slot width, no layout overflow padding */}
