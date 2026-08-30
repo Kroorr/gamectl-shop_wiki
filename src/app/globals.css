@@ -58,15 +58,15 @@
   }
 }
 
-/* Keep the mobile header and optional banner in normal document flow. */
+/* Keep the complete mobile navigation and its optional ad in a two-layer stack. */
 @media (max-width: 767px) {
   .site-header {
-    position: static !important;
-    top: auto !important;
+    position: sticky !important;
+    top: 0 !important;
   }
   .site-ad-slot {
-    position: static !important;
-    top: auto !important;
+    position: sticky !important;
+    top: 61px !important;
   }
 }
 
