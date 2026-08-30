@@ -58,6 +58,17 @@
   }
 }
 
+/* Header and the optional banner intentionally share normal document flow.
+ * Keep these rules explicit so an old cached utility stylesheet cannot turn
+ * either element into an overlapping fixed/sticky layer on mobile. */
+@media (max-width: 767px) {
+  .site-header,
+  .site-ad-slot {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
 @layer base {
   * { @apply border-border; }
   html { scroll-behavior: smooth; overflow-x: hidden; }

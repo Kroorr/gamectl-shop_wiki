@@ -27,7 +27,7 @@ export function StickyAdBanner({ adKey }: StickyAdBannerProps) {
   if (!adKey || dismissed) return null;
 
   return (
-    <div className="relative z-10 w-full py-2">
+    <div data-site-ad className="site-ad-slot relative z-10 w-full py-2">
       {/* Center the ad banner slot on all screens, adding small margin for mobile bounds */}
       <div className="mx-auto flex justify-center px-4">
         {/* relative container with exact ad slot width, no layout overflow padding */}
