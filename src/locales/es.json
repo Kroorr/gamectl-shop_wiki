@@ -48,6 +48,8 @@
   },
   "shared": {
     "wikiNavigation": "Navegación del Wiki",
+    "activeCodes": "Códigos activos",
+    "viewAllCodes": "Ver todos los códigos",
     "readMore": "Leer más",
     "lastUpdated": "Última actualización",
     "publishedOn": "Publicado el",

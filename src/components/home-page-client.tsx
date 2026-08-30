@@ -21,7 +21,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-card/60 px-4 py-10 text-center shadow-xl shadow-black/5 md:px-10 md:py-16">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--nav-theme)/0.28)] bg-gradient-to-br from-[hsl(var(--nav-theme)/0.14)] via-card to-card px-5 py-9 text-left shadow-2xl shadow-[hsl(var(--nav-theme)/0.08)] md:px-12 md:py-14">
         <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden opacity-25 dark:opacity-20">
           <Image
             src="/images/hero.webp"
@@ -33,15 +33,16 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background opacity-85" />
         </div>
 
-        <div className="relative z-10">
-          <div className="mx-auto mb-5 flex flex-wrap items-center justify-center gap-3">
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
-            <span className="inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground">{home.hero.eyebrow}</span>
-          </div>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-muted-foreground">{home.hero.description}</p>
+        <div className="relative z-10 grid gap-10 md:grid-cols-[1.15fr_.85fr] md:items-center">
+          <div>
+            <div className="mb-5 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center rounded-full border border-[hsl(var(--nav-theme)/0.35)] bg-[hsl(var(--nav-theme)/0.1)] px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme))]">{home.hero.eyebrow}</span>
+            </div>
+            <h1 className="max-w-3xl text-5xl font-black tracking-[-0.05em] text-foreground sm:text-6xl lg:text-8xl">{home.hero.title}<span className="text-[hsl(var(--nav-theme))]">.</span></h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">{home.hero.description}</p>
           
           {/* Action Buttons */}
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href={localizeHref("/guide", locale)}
               className="flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-5 py-2.5 text-sm font-bold text-primary-foreground transition-all duration-200 hover:bg-[hsl(var(--nav-theme-light))] hover:shadow-lg hover:shadow-[hsl(var(--nav-theme))/0.2]"
@@ -59,7 +60,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
             </Link>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 text-left sm:grid-cols-3">
+          <div className="mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
             {home.hero.stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -70,6 +71,21 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
                 <span className="mt-1 text-xs leading-snug text-muted-foreground">{stat.description}</span>
               </div>
             ))}
+          </div>
+          </div>
+          <div className="rounded-3xl border border-border/80 bg-background/75 p-5 shadow-xl backdrop-blur-sm md:p-7">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">Start exploring</p>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Your shortcut to the wiki</h2>
+            <div className="mt-6 divide-y divide-border/70">
+              {navGroups.slice(0, 4).map((group, index) => {
+                const Icon = icons[index % icons.length];
+                return <Link key={group.slug} href={localizeHref(`/${group.slug}`, locale)} className="group flex items-center gap-3 py-4 first:pt-0 last:pb-0">
+                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-[hsl(var(--nav-theme)/0.11)] text-[hsl(var(--nav-theme))]"><Icon className="h-4 w-4" /></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))]">{group.title}</span><span className="text-xs text-muted-foreground">{group.count} resources</span></span>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-[hsl(var(--nav-theme))]" />
+                </Link>;
+              })}
+            </div>
           </div>
         </div>
       </section>

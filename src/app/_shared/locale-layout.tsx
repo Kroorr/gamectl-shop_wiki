@@ -49,7 +49,7 @@ export async function LocaleLayoutShell({
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <JsonLd data={organization} />
             <SiteHeader locale={locale} />
