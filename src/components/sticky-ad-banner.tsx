@@ -2,7 +2,7 @@
  * StickyAdBanner
  *
  * Renders a 320×50 Adsterra banner in a second sticky layer below the header.
- * - top-[105px] keeps it below the two-row mobile header and above page content
+ * - top-[116px] leaves a safety buffer below the two-row mobile header
  * - it never covers the mobile navigation
  * - No border-y / no background → desktop side-gutters are completely invisible
  * - Outer mx-auto max-w-4xl centres the slot; inner w-[320px] locks the ad width
@@ -27,7 +27,7 @@ export function StickyAdBanner({ adKey }: StickyAdBannerProps) {
   if (!adKey || dismissed) return null;
 
   return (
-    <div data-site-ad className="site-ad-slot sticky top-[105px] z-40 w-full bg-background/95 py-2 backdrop-blur-xl">
+    <div data-site-ad className="site-ad-slot sticky top-[116px] z-40 w-full bg-background/95 py-2 backdrop-blur-xl">
       {/* Center the ad banner slot on all screens, adding small margin for mobile bounds */}
       <div className="mx-auto flex justify-center px-4">
         {/* relative container with exact ad slot width, no layout overflow padding */}

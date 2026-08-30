@@ -54,7 +54,7 @@ export async function LocaleLayoutShell({
           <NextIntlClientProvider locale={locale} messages={messages}>
             <JsonLd data={organization} />
             <SiteHeader locale={locale} />
-            <div aria-hidden="true" className="site-header-spacer h-[105px] md:hidden" />
+            <div aria-hidden="true" className="site-header-spacer h-[116px] md:hidden" />
             <StickyAdBanner adKey={process.env.NEXT_PUBLIC_AD_KEY_320X50} />
             {children}
             <SiteFooter locale={locale} />
