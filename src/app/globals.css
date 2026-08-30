@@ -61,12 +61,15 @@
 /* Keep the complete mobile navigation and its optional ad in a two-layer stack. */
 @media (max-width: 767px) {
   .site-header {
-    position: sticky !important;
+    position: fixed !important;
     top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
   }
   .site-ad-slot {
     position: sticky !important;
-    top: 61px !important;
+    top: 105px !important;
   }
 }
 
