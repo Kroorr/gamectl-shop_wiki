@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { localizeHref } from "@/components/site";
+import { TrailerButton, localizeHref } from "@/components/site";
 import type { ContentItem, NavGroup } from "@/lib/content";
 import en from "@/locales/en.json";
 import { SITE_CONFIG } from "@/config/site";
@@ -172,6 +172,17 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
                 <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-[hsl(var(--nav-theme))]" />
               </Link>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* Trailer / Video Section — standalone section below content sections */}
+      {home.hero.videoLabel && (
+        <section aria-labelledby="trailer-title">
+          <h2 id="trailer-title" className="text-3xl font-bold tracking-tight text-foreground">{home.hero.videoLabel}</h2>
+          <p className="mt-2 text-muted-foreground">Watch the official gameplay reveals and trailers.</p>
+          <div className="mt-5">
+            <TrailerButton videoId={home.hero.videoId} title={home.hero.videoLabel} />
           </div>
         </section>
       )}

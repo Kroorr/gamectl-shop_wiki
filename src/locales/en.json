@@ -51,7 +51,9 @@
           "label": "Active Codes",
           "href": "/codes"
         }
-      }
+      },
+      "videoLabel": "Official Trailer",
+      "videoId": ""
     },
     "featured": {
       "title": "Featured Content",
