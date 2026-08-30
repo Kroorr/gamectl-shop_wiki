@@ -55,7 +55,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
       </div>
     </div>
   );
-  return <header data-site-header className="site-header relative z-50 border-b border-border/80 bg-background/95 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}<nav aria-label="Mobile category navigation" className="mt-2 flex gap-1 overflow-x-auto pb-1 md:hidden">{NAVIGATION_CONFIG.map((item) => <Link key={item.key} href={localizeHref(item.path, locale)} className="shrink-0 rounded-md px-2.5 py-1 text-xs font-semibold text-muted-foreground hover:bg-muted hover:text-foreground">{t(item.key)}</Link>)}</nav></div></header>;
+  return <header data-site-header className="site-header relative z-50 border-b border-border/80 bg-background/95 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}</div></header>;
 }
 
 function ThemeToggle({ label }: { label: string }) {

@@ -58,7 +58,7 @@
   }
 }
 
-/* Keep the complete mobile navigation and its optional ad in a two-layer stack. */
+/* Keep the mobile header and optional ad in a two-layer stack. */
 @media (max-width: 767px) {
   .site-header {
     position: fixed !important;
@@ -69,7 +69,7 @@
   }
   .site-ad-slot {
     position: sticky !important;
-    top: 116px !important;
+    top: 61px !important;
   }
 }
 
