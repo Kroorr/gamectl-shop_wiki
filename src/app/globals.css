@@ -58,14 +58,16 @@
   }
 }
 
-/* Header and the optional banner intentionally share normal document flow.
- * Keep these rules explicit so an old cached utility stylesheet cannot turn
- * either element into an overlapping fixed/sticky layer on mobile. */
+/* Keep the mobile header and optional banner in a predictable two-layer stack.
+ * The banner starts below the 61px mobile header and cannot cover its controls. */
 @media (max-width: 767px) {
-  .site-header,
+  .site-header {
+    position: sticky !important;
+    top: 0 !important;
+  }
   .site-ad-slot {
-    position: static !important;
-    top: auto !important;
+    position: sticky !important;
+    top: 61px !important;
   }
 }
 
