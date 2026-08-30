@@ -23,8 +23,8 @@ export function getLocaleMetadata(locale: Locale): Metadata {
     metadataBase: new URL(siteUrl),
     title: { default: "GameCTL Wiki", template: "%s" },
     description: "GameCTL Wiki — a fan-made community wiki with guides, codes, updates, and tips for players.",
-    openGraph: { type: "website", locale, url: siteUrl, siteName: "GameCTL Wiki", images: [{ url: image }] },
-    twitter: { card: "summary_large_image", images: [image] },
+    openGraph: { type: "website", locale, url: siteUrl, siteName: "GameCTL Wiki", title: "GameCTL Wiki", description: "GameCTL Wiki guides, active codes, updates, maps, and practical tips for players.", images: [{ url: image, width: 1200, height: 675, alt: "GameCTL Wiki" }] },
+    twitter: { card: "summary_large_image", title: "GameCTL Wiki", description: "Guides, codes, updates, maps, and tips for GameCTL players.", images: [image] },
   };
 }
 

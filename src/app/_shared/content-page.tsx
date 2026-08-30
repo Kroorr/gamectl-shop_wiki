@@ -49,7 +49,9 @@ export async function getContentPageMetadata(locale: Locale, slug: string[]): Pr
       title: content.metadata.title,
       description: content.metadata.description,
       url: `${siteUrl}/${contentType}/${contentSlug.join("/")}`,
+      images: [{ url: `${siteUrl}${content.metadata.image || "/images/hero.webp"}`, alt: content.metadata.title }],
     },
+    twitter: { card: "summary_large_image", title: content.metadata.title, description: content.metadata.description, images: [`${siteUrl}${content.metadata.image || "/images/hero.webp"}`] },
   };
 }
 
@@ -151,6 +153,17 @@ export async function ContentPage({ locale, segments }: { locale: Locale; segmen
     datePublished: content.metadata.date,
     author: { "@type": "Organization", name: "GameCTL Wiki" },
     publisher: { "@type": "Organization", name: "GameCTL Wiki" },
+    image: content.metadata.image ? `${siteUrl}${content.metadata.image}` : `${siteUrl}/images/hero.webp`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}${contentHref}` },
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: contentType, item: `${siteUrl}/${contentType}` },
+      { "@type": "ListItem", position: 3, name: content.metadata.title, item: `${siteUrl}${contentHref}` },
+    ],
   };
 
   const MDXContent = content.MDXContent;
@@ -158,6 +171,7 @@ export async function ContentPage({ locale, segments }: { locale: Locale; segmen
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={article} />
+      <JsonLd data={breadcrumb} />
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div>
           <Breadcrumbs items={[

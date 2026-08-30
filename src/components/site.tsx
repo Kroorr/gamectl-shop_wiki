@@ -20,7 +20,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "nav" });
   const header = (
     <div className="flex items-center justify-between gap-4">
-      <Link href={localizeHref("/", locale)} className="flex items-center gap-3">
+      <Link href={localizeHref("/", locale)} className="flex items-center gap-3" aria-label="GameCTL Wiki home">
         <Image
           src="/favicon.ico"
           alt=""
@@ -31,7 +31,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
           priority
           unoptimized
         />
-        <span className="text-sm font-bold tracking-wide text-foreground">GameCTL</span>
+        <span className="text-sm font-bold tracking-wide text-foreground">GameCTL <span className="font-normal text-muted-foreground">Wiki</span></span>
       </Link>
       <nav className="hidden items-center gap-1 md:flex">
         {NAVIGATION_CONFIG.map((item) => (
@@ -54,7 +54,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
       </div>
     </div>
   );
-  return <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}</div></header>;
+  return <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-xl"><div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">{header}</div></header>;
 }
 
 function ThemeToggle({ label }: { label: string }) {

@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { localizeHref } from "@/components/site";
-import type { ContentItem } from "@/lib/content";
+import type { ContentItem, NavGroup } from "@/lib/content";
 import en from "@/locales/en.json";
 
 type Home = typeof en.home;
@@ -16,12 +16,12 @@ type Home = typeof en.home;
 const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, MapIcon, Users, Trophy, Skull, Zap, CircleHelp, ScrollText];
 
 
-export default function HomePageClient({ home, locale, articles, recentArticles,  }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
+export default function HomePageClient({ home, locale, articles, recentArticles, navGroups }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[]; navGroups: NavGroup[] }) {
 
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative text-center py-10 px-4 md:py-16 md:px-8 rounded-3xl border border-border/40 bg-card/10 overflow-hidden shadow-sm">
+      <section className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-card/60 px-4 py-10 text-center shadow-xl shadow-black/5 md:px-10 md:py-16">
         <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden opacity-25 dark:opacity-20">
           <Image
             src="/images/hero.webp"
@@ -34,11 +34,11 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
         </div>
 
         <div className="relative z-10">
-          <div className="mx-auto mb-5 flex flex-wrap items-center justify-center gap-2">
+          <div className="mx-auto mb-5 flex flex-wrap items-center justify-center gap-3">
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
             <span className="inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground">{home.hero.eyebrow}</span>
           </div>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{home.hero.description}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-muted-foreground">{home.hero.description}</p>
           
           {/* Action Buttons */}
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -59,7 +59,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
             </Link>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 text-left sm:grid-cols-3">
             {home.hero.stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -71,6 +71,35 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="quick-answer-title" className="grid gap-5 rounded-3xl border border-[hsl(var(--nav-theme)/0.18)] bg-[hsl(var(--nav-theme)/0.06)] p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[hsl(var(--nav-theme))]">Quick answer</p>
+          <h2 id="quick-answer-title" className="mt-2 text-xl font-bold text-foreground">Looking for the fastest way to progress?</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-foreground">Start with the beginner guide, redeem every active code, then use the latest updates to keep your strategy current.</p>
+        </div>
+        <Link href={localizeHref("/guide/getting-started", locale)} className="inline-flex items-center justify-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-5 py-3 text-sm font-bold text-primary-foreground transition hover:brightness-110">Start here <ArrowRight className="h-4 w-4" /></Link>
+      </section>
+
+      <section aria-labelledby="explore-title">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[hsl(var(--nav-theme))]">Explore the wiki</p>
+            <h2 id="explore-title" className="mt-2 text-2xl font-bold text-foreground">Find what you need</h2>
+          </div>
+          <span className="hidden text-sm text-muted-foreground sm:block">{articles.length} resources indexed</span>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {navGroups.map((group, index) => {
+            const Icon = icons[index % icons.length];
+            return <Link key={group.slug} href={localizeHref(`/${group.slug}`, locale)} className="group rounded-2xl border border-border/70 bg-card/70 p-5 transition hover:-translate-y-1 hover:border-[hsl(var(--nav-theme)/0.45)] hover:shadow-lg">
+              <div className="flex items-center justify-between"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[hsl(var(--nav-theme)/0.11)] text-[hsl(var(--nav-theme))]"><Icon className="h-5 w-5" /></span><ChevronRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-[hsl(var(--nav-theme))]" /></div>
+              <h3 className="mt-5 font-bold text-foreground">{group.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{group.count} articles and resources</p>
+            </Link>;
+          })}
         </div>
       </section>
 

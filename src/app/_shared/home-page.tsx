@@ -17,14 +17,15 @@ export async function getHomeMetadata(locale: Locale): Promise<Metadata> {
     description: messages.home.meta.description,
     alternates: {
       canonical: locale === routing.defaultLocale ? "/" : `/${locale}`,
-      languages: { en: "/" },
+      languages: { en: "/", es: "/es", fr: "/fr", pt: "/pt" },
     },
-    openGraph: {
+      openGraph: {
       title: messages.home.meta.title,
       description: messages.home.meta.description,
       url: siteUrl,
-      images: [`${siteUrl}/images/hero.webp`],
+      images: [{ url: `${siteUrl}/images/hero.webp`, width: 1200, height: 675, alt: "GameCTL Wiki" }],
     },
+    twitter: { card: "summary_large_image", title: messages.home.meta.title, description: messages.home.meta.description, images: [`${siteUrl}/images/hero.webp`] },
   };
 }
 
@@ -63,6 +64,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           locale={locale}
           articles={allArticles}
           recentArticles={recentArticles}
+          navGroups={navGroups}
         />
         <div className="hidden lg:block">
           <WikiSidebar locale={locale} navGroups={navGroups} />
