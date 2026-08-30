@@ -178,7 +178,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
       )}
       </div>
 
-      <aside className="hidden lg:block lg:sticky lg:top-24">
+      <aside className="wiki-shortcut hidden lg:block">
         <div className="rounded-3xl border border-border/80 bg-card/90 p-5 shadow-xl backdrop-blur-md md:p-7">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">Start exploring</p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Your shortcut to the wiki</h2>

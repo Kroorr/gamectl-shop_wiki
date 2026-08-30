@@ -75,6 +75,18 @@
 }
 
 @layer utilities {
+  /* Desktop wiki shortcut stays in the viewport while the article stream scrolls. */
+  .wiki-shortcut {
+    position: fixed;
+    z-index: 40;
+    top: 6rem;
+    right: max(1rem, calc((100vw - 80rem) / 2));
+    width: 18.75rem;
+    max-height: calc(100vh - 7.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
   .prose-invert { color: hsl(var(--muted-foreground)); }
 
   /* ── Headings ─────────────────────────────────── */
