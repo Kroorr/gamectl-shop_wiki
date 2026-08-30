@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { JsonLd } from "@/components/site";
+import { JsonLd, WikiSidebar } from "@/components/site";
 import HomePageClient from "@/components/home-page-client";
 import { getAllContent, getDynamicNavigation, type ContentItem, CONTENT_TYPES } from "@/lib/content";
 import { routing, type Locale } from "@/i18n/routing";
@@ -58,7 +58,12 @@ export async function HomePage({ locale }: { locale: Locale }) {
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={webSite} />
-      <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} navGroups={navGroups} />
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} navGroups={navGroups} />
+        <div className="wiki-shortcut hidden lg:block">
+          <WikiSidebar locale={locale} navGroups={navGroups} />
+        </div>
+      </div>
     </main>
   );
 }
