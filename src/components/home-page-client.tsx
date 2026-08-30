@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { localizeHref } from "@/components/site";
 import type { ContentItem, NavGroup } from "@/lib/content";
 import en from "@/locales/en.json";
+import { SITE_CONFIG } from "@/config/site";
 
 type Home = typeof en.home;
 
@@ -38,7 +39,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles,
             <div className="mb-5 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center rounded-full border border-[hsl(var(--nav-theme)/0.35)] bg-[hsl(var(--nav-theme)/0.1)] px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme))]">{home.hero.eyebrow}</span>
             </div>
-            <h1 className="max-w-3xl text-5xl font-black tracking-[-0.05em] text-foreground sm:text-6xl lg:text-8xl">{home.hero.title}<span className="text-[hsl(var(--nav-theme))]">.</span></h1>
+            <h1 className="max-w-3xl text-5xl font-black tracking-[-0.05em] text-foreground sm:text-6xl lg:text-8xl">{home.hero.title || SITE_CONFIG.gameName}<span className="text-[hsl(var(--nav-theme))]">.</span></h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">{home.hero.description}</p>
           
           {/* Action Buttons */}

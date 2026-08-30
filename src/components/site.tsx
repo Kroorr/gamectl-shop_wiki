@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CollapsibleNavGroup } from "@/components/collapsible-nav-group";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { ClientThemeToggle } from "@/components/theme-toggle";
+import { SITE_CONFIG } from "@/config/site";
 
 export function localizeHref(href: string, locale: string) {
   if (locale === "en") return href;
@@ -20,7 +21,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "nav" });
   const header = (
     <div className="flex items-center justify-between gap-4">
-      <Link href={localizeHref("/", locale)} className="flex items-center gap-3" aria-label="GameCTL Wiki home">
+      <Link href={localizeHref("/", locale)} className="flex items-center gap-3" aria-label={`${SITE_CONFIG.displayName} home`}>
         <Image
           src="/favicon.ico"
           alt=""
@@ -31,7 +32,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
           priority
           unoptimized
         />
-        <span className="text-sm font-bold tracking-wide text-foreground">GameCTL <span className="font-normal text-muted-foreground">Wiki</span></span>
+        <span className="text-sm font-bold tracking-wide text-foreground">{SITE_CONFIG.gameName} <span className="font-normal text-muted-foreground">Wiki</span></span>
       </Link>
       <nav className="hidden items-center gap-1 md:flex">
         {NAVIGATION_CONFIG.map((item) => (

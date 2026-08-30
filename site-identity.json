@@ -2,5 +2,10 @@
   "schema_version": 1,
   "entity_type": "game",
   "game_name": "GameCTL",
-  "domain": "gamectl.shop"
+  "domain": "gamectl.shop",
+  "ui": {
+    "theme": "editorial-wiki",
+    "accent": "blue",
+    "homepageLayout": "wiki-hub"
+  }
 }

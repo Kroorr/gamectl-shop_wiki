@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site";
 import { StickyAdBanner } from "@/components/sticky-ad-banner";
 import type { Locale } from "@/i18n/routing";
+import { SITE_CONFIG } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gamectl.shop";
@@ -21,10 +22,10 @@ export function getLocaleMetadata(locale: Locale): Metadata {
   const image = `${siteUrl}/images/hero.webp`;
   return {
     metadataBase: new URL(siteUrl),
-    title: { default: "GameCTL Wiki", template: "%s" },
-    description: "GameCTL Wiki — a fan-made community wiki with guides, codes, updates, and tips for players.",
-    openGraph: { type: "website", locale, url: siteUrl, siteName: "GameCTL Wiki", title: "GameCTL Wiki", description: "GameCTL Wiki guides, active codes, updates, maps, and practical tips for players.", images: [{ url: image, width: 1200, height: 675, alt: "GameCTL Wiki" }] },
-    twitter: { card: "summary_large_image", title: "GameCTL Wiki", description: "Guides, codes, updates, maps, and tips for GameCTL players.", images: [image] },
+    title: { default: SITE_CONFIG.displayName, template: "%s" },
+    description: `${SITE_CONFIG.displayName} — a fan-made community wiki with guides, codes, updates, and tips for players.`,
+    openGraph: { type: "website", locale, url: siteUrl, siteName: SITE_CONFIG.displayName, title: SITE_CONFIG.displayName, description: `${SITE_CONFIG.displayName} guides, active codes, updates, maps, and practical tips for players.`, images: [{ url: image, width: 1200, height: 675, alt: SITE_CONFIG.displayName }] },
+    twitter: { card: "summary_large_image", title: SITE_CONFIG.displayName, description: `Guides, codes, updates, maps, and tips for ${SITE_CONFIG.gameName} players.`, images: [image] },
   };
 }
 
