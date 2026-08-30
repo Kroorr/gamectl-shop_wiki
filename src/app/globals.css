@@ -58,16 +58,15 @@
   }
 }
 
-/* Keep the mobile header and optional banner in a predictable two-layer stack.
- * The banner starts below the 61px mobile header and cannot cover its controls. */
+/* Keep the mobile header and optional banner in normal document flow. */
 @media (max-width: 767px) {
   .site-header {
-    position: sticky !important;
-    top: 0 !important;
+    position: static !important;
+    top: auto !important;
   }
   .site-ad-slot {
-    position: sticky !important;
-    top: 61px !important;
+    position: static !important;
+    top: auto !important;
   }
 }
 
